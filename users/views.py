@@ -8,7 +8,7 @@ def register(request):
         form = UserCreationForm()
     else:
         form = UserCreationForm(data=request.POST)
-        if form.is_valid:
+        if form.is_valid():
             new_user = form.save()
             login(request, new_user)
             return redirect('MainApp:index')
