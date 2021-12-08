@@ -2,10 +2,12 @@
 {%block page_header %}
 <h3>{{topic}}</h3>
 {% endblock page_header %}
+
 {% block content %}
-<p>Topic: {{topic}}</p>
-<ul>
-    {% for e in entries %}
+<p>
+    <a href="{% url 'MainApp:new_entry' topic.id %}">Add new Entry</a>
+</p>
+    {% for entry in entries %}
     <div class="card mb-3">
         <h4 class="card-header">
             {{ entry.date_added|date:'M d, Y H:i' }}
@@ -18,6 +20,6 @@
     {% empty %}
     <p>There are no entries for this topic yet.</p>
     {% endfor %}
-</ul>
+
 
 {% endblock content %}
